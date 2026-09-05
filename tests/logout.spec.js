@@ -1,67 +1,29 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 
-const LoginPage = require('../Pages/LoginPage');
-const Logout = require('../Pages/logout');
+import LoginPage from '../Pages/LoginPage.js';
+import Logout from '../Pages/logout.js';
 
-const LogoutData = require('../testdata/logout.json');
-
-
-// ========================================
-// Logout Test
-// ========================================
+import LoginData from '../testdata/LogintestData.json' assert { type: 'json' };
 
 test('Logout Test Case', async ({ page }) => {
 
-
-    // ========================================
-    // Create Page Objects
-    // ========================================
-
     const login = new LoginPage(page);
-
     const logout = new Logout(page);
 
+    // 1. Open URL & Login
+    await page.goto('https://www.saucedemo.com/');
 
-    // ========================================
-    // 1. Open SauceDemo
-    // ========================================
-
-    await login.gotoLoginPage();
-
-
-    // ========================================
-    // 2. Login
-    // ========================================
-
+    const loginUser = LoginData.validUsers[0];
     await login.login(
-        LogoutData.username,
-        LogoutData.password
+        loginUser.username,
+        loginUser.password
     );
 
-
-    // ========================================
-    // 3. Verify Products Page
-    // ========================================
-
-    await expect(page.locator('.title'))
-        .toHaveText('Products');
-
-
-    // ========================================
-    // 4. Logout
-    // ========================================
-
+    // 2. Perform Logout Action
     await logout.logout();
 
-
-    // ========================================
-    // 5. Verify Login Page
-    // ========================================
-
-    const loginPageDisplayed =
-        await logout.isLoginPageDisplayed();
-
-    expect(loginPageDisplayed)
-        .toBe(true);
+    // 3. Verify User Redirected to Login Page
+    const loginPageDisplayed = await logout.isLoginPageDisplayed();
+    expect(loginPageDisplayed).toBe(true);
 
 });

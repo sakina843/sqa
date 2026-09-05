@@ -1,0 +1,14 @@
+GET USER STATUS: 200
+GET USER RESPONSE: {
+  statusCode: 200,
+  data: {
+    _id: '6a9bb8293806f3a2ca3791fb',
+    username: 'taha1788590120674',
+    fullname: 'Muhammad Taha Replace',
+    createdAt: '2026-09-05T06:35:21.268Z',
+    updatedAt: '2026-09-05T06:35:24.403Z',
+    __v: 0
+  },
+  message: 'User fetched successfully',
+  success: true
+}

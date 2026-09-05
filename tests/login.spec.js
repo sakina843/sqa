@@ -1,19 +1,25 @@
 import { test, expect } from '../fixtures/testSetup.js';
-import loginData from '../testdata/logintestData.json' assert { type: 'json' };
+import loginData from '../testdata/LogintestData.json' assert { type: 'json' };
 import LoginPage from '../Pages/LoginPage.js';
 import { attachStepScreenshot } from '../utilities/screenshots.js';
 
 test.describe('Login', () => {
-test('Login Test Case with valid user', async ({ page }) => {
-const loginPage = new LoginPage(page);
-const data = loginData.validUsers[0];
-await test.step('Enter credential and login', async () => {
-await loginPage.login(data.username, data.password);
-});
+    test('Login Test Case with valid user', async ({ page }) => {
+        const loginPage = new LoginPage(page);
+        const data = loginData.validUsers[0];
 
-await test.step('Verify Welcome Message on Landing page', async () => {
-await expect(loginPage.message.first()).toHaveText(data.expectedMessage);
-await attachStepScreenshot(page, '05 - After welcome message verification');
-});
-});
+        // 1. Navigate to Saucedemo App
+        await page.goto('https://www.saucedemo.com/');
+
+        // 2. Perform Login Action
+        await test.step('Enter credential and login', async () => {
+            await loginPage.login(data.username, data.password);
+        });
+
+        // 3. Verify Landing Page Title / Header
+        await test.step('Verify Welcome Message on Landing page', async () => {
+            await expect(loginPage.message.first()).toHaveText(data.expectedMessage);
+            await attachStepScreenshot(page, '05 - After welcome message verification');
+        });
+    });
 });

@@ -1,0 +1,16 @@
+UPDATE ACCOUNT STATUS: 200
+UPDATE ACCOUNT RESPONSE: {
+  statusCode: 200,
+  data: {
+    _id: '6a9a6ad8f8e610b20320ceb9',
+    username: 'taha1788504791354',
+    email: 'taha1788504791354@gmail.com',
+    fullname: 'Muhammad Taha Updated',
+    createdAt: '2026-09-04T06:53:12.163Z',
+    updatedAt: '2026-09-04T06:53:14.842Z',
+    __v: 0,
+    refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTlhNmFkOGY4ZTYxMGIyMDMyMGNlYjkiLCJlbWFpbCI6InRhaGExNzg4NTA0NzkxMzU0QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiTXVoYW1tYWQgVGFoYSIsImlhdCI6MTc4ODUwNDc5MywiZXhwIjoxNzg5MzY4NzkzfQ.toUPGX72QX43GP8E2aPaJqIh4btpXP_5f8An1W_tItU'
+  },
+  message: 'User details updated successfully',
+  success: true
+}
